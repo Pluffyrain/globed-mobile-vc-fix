@@ -1,0 +1,27 @@
+name: Build Patched Android
+
+on:
+  push:
+    branches: ['**']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build the mod
+        uses: geode-sdk/build-geode-mod@main
+        id: build
+        with:
+          sdk: 'latest'
+          build-config: Release
+          configure-args: '-DGLOBED_RELEASE=ON'
+          target: Android64
+
+      - name: Upload built mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: globed-patched-android64
+          path: ${{ steps.build.outputs.build-output }}
