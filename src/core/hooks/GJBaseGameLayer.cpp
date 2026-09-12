@@ -25,6 +25,7 @@
 #include <asp/iter.hpp>
 #include <qunet/util/algo.hpp>
 #include <cue/Util.hpp>
+#define GLOBED_VOICE_CAN_TALK
 
 using namespace geode::prelude;
 using namespace asp::time;
