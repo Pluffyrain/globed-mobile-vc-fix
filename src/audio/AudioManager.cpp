@@ -469,10 +469,6 @@ void AudioManager::threadHandleMessage(AudioThreadMessage in) {
 }
 
 Result<> AudioManager::threadStartRecording() {
-    if (!permission::getPermissionStatus(Permission::RecordAudio)) {
-        return Err("Recording failed, please grant microphone permission in Globed settings");
-    }
-
     if (!m_recordDevice) {
         return Err("No recording device selected");
     }
